@@ -1,29 +1,22 @@
+import 'package:book/models/book.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final String description;
-  final String image;
-
-  DetailScreen({ /* 생성자 */
-    required this.title,
-    required this.subTitle,
-    required this.description,
-    required this.image
-  });
+  final Book book;
+  /* 생성자 */
+  const DetailScreen({required this.book});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(book.title),
       ),
       body: ListView(
         children: [
           Image.network(
-              image,
+              book.image,
               width: 300,
           ),
           Padding(padding: EdgeInsets.all(3)),
@@ -39,7 +32,7 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        title,
+                        book.title,
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -47,7 +40,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      subTitle,
+                      book.subTitle,
                       style: TextStyle(fontSize: 18, color: Colors.grey),
                     )
                   ],
@@ -111,7 +104,7 @@ class DetailScreen extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(15),
-            child: Text(description),
+            child: Text(book.description),
           )
         ],
       ),
